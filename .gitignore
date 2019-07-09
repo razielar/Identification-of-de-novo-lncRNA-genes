@@ -1,0 +1,9 @@
+### Ignore the input data: 
+
+snakemake-tutorial/data
+
+### Ignore all .snake
+
+*.snakemake
+
+
