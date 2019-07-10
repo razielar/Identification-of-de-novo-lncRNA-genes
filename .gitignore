@@ -6,4 +6,8 @@ snakemake-tutorial/data
 
 *.snakemake
 
+### Ignore the mapped reads
+
+snakemake-tutorial/mapped_reads
+
 
