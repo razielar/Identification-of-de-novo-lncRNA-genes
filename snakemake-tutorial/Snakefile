@@ -1,17 +1,3 @@
-### Step 1: Mapping reads
-#rule bwa_map:
-	#input:
-		#"data/genome.fa",
-		#"data/samples/A.fastq"
-	#output:
-		#"mapped_reads/A.bam"
-	#shell:
-		#"bwa mem {input} | samtools view -Sb - > {output}"
-
-#Since the rule has multiple input files, Snakemake will concatenate them separated by a whitespace
-
-### Step 2: Generalizing the read mapping rule
-
 rule bwa_map:
 	input:
 		"data/genome.fa",
@@ -29,10 +15,31 @@ rule samtools_sort:
 	output:
 		"sorted_reads/{sample}.bam"
 	shell:
-		"samtools sort {input} {output}"
+		"samtools sort -T sorted_reads/{wildcards.sample} "
+		"-O bam {input} > {output}"
 
+### Step 4: Indexing read alignments and DAG
 
+rule samtools_index: 
+	input:
+		"sorted_reads/{sample}.bam"
+	output:
+		"sorted_reads/{sample}.bam.bai"
+	shell:
+		"samtools index {input}"
 
+SAMPLES=["A","B"]
+
+rule bcftools_call:
+	input:
+		fa="data/genome.fa",
+		bam=expand("sorted_reads/{sample}.bam", sample=SAMPLES),
+		bai=expand("sorted_reads/{sample}.bam.bai", sample=SAMPLES)
+	output:
+		"calls/all.vcf"
+	shell:
+		"samtools mpileup -g -f {input.fa} {input.bam} | "
+		"bcftools call -mv - > {output}"
 
 
 
