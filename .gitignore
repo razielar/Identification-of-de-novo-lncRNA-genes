@@ -9,3 +9,4 @@ snakemake-tutorial/calls
 
 *.snakemake
 
+snakemake-tutorial/advances_example/data
