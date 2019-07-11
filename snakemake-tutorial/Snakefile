@@ -1,3 +1,9 @@
+rule all: 
+	input:
+		"plots/quals.svg"
+
+### Step 1: Mapping 
+
 rule bwa_map:
 	input:
 		"data/genome.fa",
@@ -28,6 +34,8 @@ rule samtools_index:
 	shell:
 		"samtools index {input}"
 
+### Step 5: Variant calling: 
+
 SAMPLES=["A","B"]
 
 rule bcftools_call:
@@ -42,5 +50,14 @@ rule bcftools_call:
 		"bcftools call -mv - > {output}"
 
 
+### Step 6: Using scripts: 
+
+rule plot_quals: 
+	input: 
+		"calls/all.vcf"
+	output: 
+		"plots/quals.svg"
+	script:
+		"scripts/plot-quals.py"
 
 
