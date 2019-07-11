@@ -4,6 +4,7 @@ snakemake-tutorial/data
 snakemake-tutorial/mapped_reads
 snakemake-tutorial/sorted_reads
 snakemake-tutorial/calls
+snakemake-tutorial/advances_example/data
 
 ### Ignore all .snake
 
