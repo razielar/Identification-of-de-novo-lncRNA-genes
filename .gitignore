@@ -12,3 +12,5 @@ snakemake-tutorial/calls
 snakemake-tutorial/advances_example/data
 
 snakemake-tutorial/advances_example/mapped_reads
+./snakemake-tutorial/advances_example/data
+./snakemake-tutorial/advances_example/scripts
