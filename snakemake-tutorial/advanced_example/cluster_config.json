@@ -1,5 +1,5 @@
 {
-    "__default__": //is a special object that specifies default parameters
+    "__default__": 
     {
         "queue" : "rg-el7,short-sl7",
         "virtual_free" : "8G",
