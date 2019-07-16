@@ -1,0 +1,13 @@
+{
+    "__default__": //is a special object that specifies default parameters
+    {
+        "queue" : "rg-el7,short-sl7",
+        "virtual_free" : "8G",
+        "h_rt" : "08:00:00",
+        "email" : "raziel.amador@crg.eu",
+        "notify" : "abe",
+        "err" : "{workflow.basedir}/qsub_logs/",
+        "out" : "{workflow.basedir}/qsub_logs/",
+        "project": "prj006070"
+    }
+}
