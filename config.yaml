@@ -1,0 +1,26 @@
+########################################################################
+# Input parameters required to drive 'Identification of de novo lncRNAs'
+########################################################################
+
+# Provide path to genome file: 
+genome: /users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa
+
+# Provide paired-end samples: 
+# NOTE: only paired-end reads are supported currently. Please give path to R1 followed by R2 as below 
+# - if you have multiple reads of R1, R2 please combined them and provide as one R1 and one R2 as shown below
+# - if providing gzipped file, please use the extension '.gz'
+# - you are free to provide a mix of uncompressed fastq files or gzipped files 
+# - the sample keys will be used for naming the output files [for e.g., Sample16, Sample17, Sample18]
+
+sample: 
+  Sample16: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/C2_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/C2_R2.fastq.gz]
+  Sample17: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R2.fastq.gz]
+  Sample18: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2-dash_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2-dash_R2.fastq.gz]
+
+
+
+
+
+
+
+
