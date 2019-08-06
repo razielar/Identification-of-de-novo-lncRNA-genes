@@ -87,6 +87,11 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 			sys.exit()
 		if not os.path.exists(read_dir):
 			os.makedirs(read_dir)
+		new_read_name_list= (sample_name,pair,"fastq.gz") if gzipped else (sample_name,pair,"fastq")
+		new_read_name= ".".join(new_read_name_list)
+		cmd= "cd " + read_dir + " && ln -s "+ r_path + " " + new_read_name
+		if not os.path.exists(os.path.join(read_dir, new_read_name)):
+			os.system(cmd)
 
 
 
