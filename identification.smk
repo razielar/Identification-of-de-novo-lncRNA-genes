@@ -66,8 +66,12 @@ print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 
 OUTPUT= os.path.abspath(config["output"])
 
+##### ---- 4) Get sample information --- ##########
 
-
+#work out if samples are gzipped or not 
+rna_seq_samples = []
+read_dir= os.path.join(OUTPUT, "data", "reads")
+print("Information: {0}".format(read_dir))
 
 
 
