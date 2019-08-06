@@ -47,9 +47,13 @@ if gzipped:
 cmd= "awk 'BEGIN {total=0} {if($0 !~ /^>/) {total+=length}} END{print total}' " + genome
 p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error)=p.communicate()
-#exit_code=p.returncode
+exit_code=p.returncode
+if exit_code:
+	raise subprocess.CalledProcessError(exit_code, cmd)
 result= int(result) #convert str to int
-print("The worked out genome length is: {:.4E}".format(Decimal(result)))
+print("The worked out genome length is: {:.2E}".format(Decimal(result)))
+
+
 
 
 
