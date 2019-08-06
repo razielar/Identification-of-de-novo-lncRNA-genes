@@ -19,7 +19,8 @@ __version__ = "1.0"
 import os
 import sys
 from glob import glob
-import subprocess 
+import subprocess
+from decimal import Decimal  
 
 #Request a minimum version of snakemake 
 from snakemake.utils import min_version 
@@ -48,7 +49,7 @@ p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=
 (result,error)=p.communicate()
 #exit_code=p.returncode
 result= int(result) #convert str to int
-print("The worked out genome length is: {0}".format(result))
+print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 
 
 
