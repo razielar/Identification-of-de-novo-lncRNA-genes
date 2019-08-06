@@ -13,8 +13,7 @@ cwd= os.getcwd()
 print(cwd)
 
 ########## --- 1) Get the genome information 
-genome=os.path.abspath(config["genome"])
-print(genome)
+
 
 
 

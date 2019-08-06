@@ -29,7 +29,9 @@ cwd= os.getcwd()
 
 ########## --- 1) Get the genome information 
 genome=os.path.abspath(config["genome"])
-print(genome)
+if os.path.exists(genome):
+	print("The genome file can be accessed: '{0}'".format(genome))
+	sys.exit()
 
 
 
