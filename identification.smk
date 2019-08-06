@@ -48,7 +48,7 @@ p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=
 (result,error)=p.communicate()
 #exit_code=p.returncode
 result= int(result) #convert str to int
-print("The worked out genome length is: {}".format(result))
+print("The worked out genome length is: {0}".format(result))
 
 
 
