@@ -13,10 +13,17 @@ cwd= os.getcwd()
 print(cwd)
 
 ########## --- 1) Get the genome information 
-genome='/users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa'
-genome_base= os.path.basename(genome)
-print(genome_base)
+# x = -1 
+# if x < 0:
+# 	raise Exception("Sorry no numbers below zero")
 
+
+# x = "hello"
+
+# if not type(x) is int:
+#   raise TypeError("Only integers are allowed")
+
+print("module load STAR/2.5.2a-foss-2016a".split(" "))
 
 
 

@@ -26,6 +26,12 @@ output: ./output
 # END of input parameters
 #####
 
+#######################
+# load required toold and provide parameters
+# NOTE: below tools are required for the 'Identification of de novo lncRNAs' pipeline
+load:
+  STAR: "module load STAR/2.5.2a-foss-2016a"
+
 
 
 

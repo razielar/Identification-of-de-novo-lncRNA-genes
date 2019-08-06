@@ -28,7 +28,7 @@ min_version("5.4.0")
 
 cwd= os.getcwd()
 
-########## --- 1) Get the genome information 
+########## --- 1) Get the genome information --- ########## 
 # get genome:
 genome=os.path.abspath(config["genome"])
 if not os.path.exists(genome):
@@ -53,15 +53,18 @@ if exit_code:
 result= int(result) #convert str to int
 print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 
+##### ---- 2) Load the tools needed to run the pipeline --- ##########
 
+# STAR_version= None
+# load= config["load"]
 
+# for tool, source in load.items():
+# 	if tool in ("STAR"):
+# 		source_dump, STAR_version= tool.split("")
 
+##### ---- 3) Define the output folder --- ##########
 
-
-
-
-
-
+OUTPUT= os.path.abspath(config["output"])
 
 
 
