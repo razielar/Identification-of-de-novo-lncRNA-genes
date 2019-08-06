@@ -38,9 +38,25 @@ if not os.path.exists(genome):
 genome_base=os.path.basename(genome)
 gzipped= None
 gzipped= True if genome.lower().endswith(".gz") else False
-if not gzipped:
-	print("The genome file is not gzipped: {0}".format(genome))
+if gzipped:
+	print("ERROR: {0} file should not be gzipped, unzip it and then return".format(genome))
 	sys.exit()
+
+# check the genome size:
+cmd= "awk 'BEGIN {total=0} {if($0 !~ /^>/) {total+=length}} END{print total}'" + genome
+p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
+(result,error)=p.communicate()
+#exit_code=p.returncode
+result= int(result) #convert str to int
+print("The worked out genome length is: {}".format(result))
+
+
+
+
+
+
+
+
 
 
 
