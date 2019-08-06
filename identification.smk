@@ -98,6 +98,18 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 
 # RSeQC: infer_experiment.py: http://rseqc.sourceforge.net/#infer-experiment-py
 
+##### ---- 4) create logs folder --- ##########
+cluster_logs_dir= os.path.join(cwd,"logs","cluster")
+if not os.path.exists(cluster_logs_dir):
+	os.makedirs(cluster_logs_dir)
+
+#######################
+# RULES STARTS HERE
+#######################
+
+
+
+
 
 
 
