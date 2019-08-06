@@ -71,8 +71,12 @@ OUTPUT= os.path.abspath(config["output"])
 #work out if samples are gzipped or not 
 rna_seq_samples = []
 read_dir= os.path.join(OUTPUT, "data", "reads")
-print("Information: {0}".format(read_dir))
 
+all_samples= config["samples"]
+gzipped= None
+for sample_name, reads in all_samples.items():
+	rna_seq_samples.append(sample_name)
+	print("{0}: {1}".format(sample_name, rna_seq_samples))
 
 
 
