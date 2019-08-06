@@ -43,7 +43,7 @@ if gzipped:
 	sys.exit()
 
 # check the genome size:
-cmd= "awk 'BEGIN {total=0} {if($0 !~ /^>/) {total+=length}} END{print total}'" + genome
+cmd= "awk 'BEGIN {total=0} {if($0 !~ /^>/) {total+=length}} END{print total}' " + genome
 p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error)=p.communicate()
 #exit_code=p.returncode
