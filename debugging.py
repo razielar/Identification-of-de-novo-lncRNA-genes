@@ -10,7 +10,7 @@ from snakemake.utils import min_version
 min_version("5.4.0")
 
 cwd= os.getcwd()
-print(cwd)
+# print(cwd)
 
 ########## --- 1) Get the genome information 
 # x = -1 
@@ -23,7 +23,25 @@ print(cwd)
 # if not type(x) is int:
 #   raise TypeError("Only integers are allowed")
 
-print("module load STAR/2.5.2a-foss-2016a".split(" "))
+# print("module load STAR/2.5.2a-foss-2016a".split(" "))
+
+thisdict =	{
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+print(thisdict)
+
+x = thisdict["model"]
+print(x)
+
+
+
+
+
+
+
 
 
 

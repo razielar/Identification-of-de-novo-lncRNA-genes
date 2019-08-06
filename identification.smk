@@ -76,8 +76,12 @@ all_samples= config["samples"]
 gzipped= None
 for sample_name, reads in all_samples.items():
 	rna_seq_samples.append(sample_name)
-	print("{0}: {1}".format(sample_name, rna_seq_samples))
+	reads_dict= {}
+	reads_dict["R1"]= reads[0]
+	reads_dict["R2"]= reads[1]
 
+for x,y in reads_dict.items():
+	print("keys:{0} -- values:{1}".format(x,y))
 
 
 
