@@ -74,33 +74,20 @@ read_dir= os.path.join(OUTPUT, "data", "reads")
 
 all_samples= config["samples"]
 gzipped= None
-for sample_name, reads in all_samples.items():
+for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sample16", "reads": ["reads[0]","reads[1]"]}
 	rna_seq_samples.append(sample_name)
 	reads_dict= {}
 	reads_dict["R1"]= reads[0]
 	reads_dict["R2"]= reads[1]
-
-for x,y in reads_dict.items():
-	print("keys:{0} -- values:{1}".format(x,y))
-
-
-
-
-
+	for pair, path in reads_dict.items():
+		r_path= os.path.abspath(path)
+		gzipped= True if r_path.lower().endswith(".gz") else False
+		if not os.path.exists(r_path):
+			print("ERROR: The pair {0} of read {1} for sample {2} cannot be accessed".format(pair,r_path,sample_name))
+			sys.exit()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+# for x,y in reads_dict.items():
+# 	print("keys:{0} -- values:{1}".format(x,y))
 
