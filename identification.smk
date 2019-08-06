@@ -83,8 +83,10 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 		r_path= os.path.abspath(path)
 		gzipped= True if r_path.lower().endswith(".gz") else False
 		if not os.path.exists(r_path):
-			print("ERROR: The pair '{0}'' of read '{1}'' for sample '{2}'' cannot be accessed".format(pair,r_path,sample_name))
+			print("ERROR: The pair '{0}' of read '{1}' for sample '{2}' cannot be accessed".format(pair,r_path,sample_name))
 			sys.exit()
+		if not os.path.exists(read_dir):
+			os.makedirs(read_dir)
 
 
 

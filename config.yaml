@@ -14,7 +14,7 @@ genome: /users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa
 
 samples: 
   Sample16: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/C2_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/C2_R2.fastq.gz]
-  Sample17: [/ERROR/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R2.fastq.gz]
+  Sample17: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2_R2.fastq.gz]
   Sample18: [/users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2-dash_R1.fastq.gz, /users/rg/cklein/dmel/regeneration/RNAseq.India.2016-05-25/S2-dash_R2.fastq.gz]
 
 ### Strand-configuration: RSeQC: infer_experiment.py
