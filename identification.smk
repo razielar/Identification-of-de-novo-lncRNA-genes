@@ -94,7 +94,11 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 			os.system(cmd)
 
 
+##### ---- Strandness information --- ##########  
 
-# for x,y in reads_dict.items():
-# 	print("keys:{0} -- values:{1}".format(x,y))
+# RSeQC: infer_experiment.py: http://rseqc.sourceforge.net/#infer-experiment-py
+
+
+
+
 
