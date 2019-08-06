@@ -13,8 +13,9 @@ cwd= os.getcwd()
 print(cwd)
 
 ########## --- 1) Get the genome information 
-
-
+genome='/users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa'
+genome_base= os.path.basename(genome)
+print(genome_base)
 
 
 

@@ -28,10 +28,27 @@ min_version("5.4.0")
 cwd= os.getcwd()
 
 ########## --- 1) Get the genome information 
+# get genome:
 genome=os.path.abspath(config["genome"])
-if os.path.exists(genome):
-	print("The genome file can be accessed: '{0}'".format(genome))
+if not os.path.exists(genome):
+	print("ERROR: The genome file cannot be accessed: {0}".format(genome))
 	sys.exit()
+
+# check if genome is gzipped and exit if true: 
+genome_base=os.path.basename(genome)
+gzipped= None
+gzipped= True if genome.lower().endswith(".gz") else False
+if not gzipped:
+	print("The genome file is not gzipped: {0}".format(genome))
+	sys.exit()
+
+
+
+
+
+
+
+
 
 
 
