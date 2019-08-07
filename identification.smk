@@ -63,8 +63,8 @@ if not os.path.exists(index_genome):
 
 index_end= None
 index_end= True if index_genome.lower().endswith(".fa.fai") else False
-if index_end:
-	print("The index_genome is correct '{0}'".format(index_genome)) 
+if not index_end:
+	print("ERROR: indexed-genome: '{0}' should end: '.fa.fai' ".format(index_genome)) 
 
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
