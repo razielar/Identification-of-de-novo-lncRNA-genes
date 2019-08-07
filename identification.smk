@@ -153,8 +153,8 @@ rule all:
 
 rule STAR_index:
 	input:
-		genome= "/users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa",
-		gtf= "/nfs/users2/rg/projects/references/Annotation/D.melanogaster/dmel_r6.22/mRNA_ncRNA/ucsc.dmel-all-r6.22.mRNA.nRNA.190.length.selection.type.no.Overlapping.Sorted.gtf" 
+		genome= genome,
+		gtf= gtf_path
 	output:
 		'output/genome_index/SAindex'
 	threads: 4
