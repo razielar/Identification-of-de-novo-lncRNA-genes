@@ -149,14 +149,14 @@ if not os.path.exists(genome_index_folder):
 
 rule all: 
 	input:
-		genome_index_folder
+		'output/genome_index'
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path 
 	output:
-		genome_index_folder
+		'output/genome_index'
 	threads: 4
 	shell:
 		"STAR --runThreadN {threads} "
