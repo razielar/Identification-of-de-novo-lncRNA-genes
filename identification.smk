@@ -81,7 +81,10 @@ if not gtf_end:
 
 # check the number of genes and transcripts:
 cmd= "awk -F \"\\t\" '$3 ~ \"gene\" {print $0}'  " + gtf_path + " | wc -l" 
-print("printed command: {0}".format(cmd))
+p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
+(result,error) = p.communicate()
+result= int(result)
+print("The worked out GTF file contains: {} genes".format(result))
 
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
