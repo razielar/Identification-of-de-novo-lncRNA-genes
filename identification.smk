@@ -165,11 +165,12 @@ if not os.path.exists(cluster_logs_dir):
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
 #######################
+gtf= os.path.abspath(config["gtf"])
 
 rule STAR_index:
 	input:
 		fa= genome 
-		gtf= gtf_path
+		gtf= gtf
 	output:
 		genome_index_folder
 	threads: 4
