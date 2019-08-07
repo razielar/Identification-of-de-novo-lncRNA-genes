@@ -168,8 +168,8 @@ if not os.path.exists(cluster_logs_dir):
 
 rule STAR_index:
 	input:
-		genome= genome 
-		gtf= gtf_path
+		genome= genome,
+		gtf= gtf_path 
 	output:
 		genome_index_folder
 	threads: 4
@@ -177,7 +177,7 @@ rule STAR_index:
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
-		"--genomeFastaFiles {input.fa} "
+		"--genomeFastaFiles {input.genome} "
 		"--sjdbGTFfile {input.gtf} "
 		"--sjdbOverhang 100"
 
