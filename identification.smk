@@ -58,7 +58,8 @@ print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 #get indexed-genome:
 index_genome= os.path.abspath(config["index"])
 if os.path.exists(index_genome):
-	print("ERROR: The indexed-genome file cannot be accessed: '{0}'".format(indexed-genome))
+	print("ERROR: The indexed-genome file cannot be accessed: '{0}'".format(index_genome))
+	sys.exit()
 
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
