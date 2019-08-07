@@ -149,16 +149,17 @@ if not os.path.exists(genome_index_folder):
 
 rule all: 
 	input:
-		'output/genome_index/SAindex'
+		'tmp/SAindex'
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		'output/genome_index/'
+		'tmp/SAindex'
 	threads: 4
 	shell:
+		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
