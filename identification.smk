@@ -66,6 +66,15 @@ index_end= True if index_genome.lower().endswith(".fa.fai") else False
 if not index_end:
 	print("ERROR: indexed-genome: '{0}' should end: '.fa.fai' ".format(index_genome)) 
 
+########## --- 3) Get the GTF file information --- ##########
+gtf_path= os.path.abspath(config["gtf"])
+if not os.path.exists(gtf_path):
+	print("ERROR: The GTF file cannot be accessed: '{0}'".format(gtf_path))
+	sys.exit()
+
+
+
+
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
 
@@ -108,6 +117,15 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 			os.system(cmd)
 
 
+#######################
+# RULES STARTS HERE
+#######################
+
+#######################
+# ALIGNMENT & ASSEMBLY WORKFLOW
+#######################
+
+
 ##### ---- Strandness information --- ##########  
 
 # RSeQC: infer_experiment.py: http://rseqc.sourceforge.net/#infer-experiment-py
@@ -117,13 +135,7 @@ cluster_logs_dir= os.path.join(cwd,"logs","cluster")
 if not os.path.exists(cluster_logs_dir):
 	os.makedirs(cluster_logs_dir)
 
-#######################
-# RULES STARTS HERE
-#######################
 
-#######################
-# ALIGNMENT & ASSEMBLY WORKFLOW
-#######################
 
 
 
