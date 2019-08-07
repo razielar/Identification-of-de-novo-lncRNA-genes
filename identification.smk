@@ -145,7 +145,7 @@ if not os.path.exists(genome_index_folder):
 	os.makedirs(genome_index_folder)
 cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf"
 if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
-	print("Well done")
+	os.system(cmd)
 
 
 
