@@ -15,20 +15,19 @@ __email__ = "raziel.amador@crg.eu"
 __status__ = "Development"
 __version__ = "1.0"
 
-### Import modules: 
+####################################### Import modules: 
 import os
 import sys
 from glob import glob
 import subprocess
-from decimal import Decimal  
-
-#Request a minimum version of snakemake 
+from decimal import Decimal 
 from snakemake.utils import min_version 
-min_version("5.4.0")
+#######################################
 
+min_version("5.4.0") #Request a minimum version of snakemake
 cwd= os.getcwd()
 
-########## --- 1) Get the genome information --- ########## 
+############################################################################# --- 1) Get Genome information --- ########## 
 # get genome:
 genome=os.path.abspath(config["genome"])
 if not os.path.exists(genome):
@@ -43,7 +42,7 @@ if gzipped:
 	print("ERROR: {0} file should not be gzipped, unzip it and then return".format(genome))
 	sys.exit()
 
-# check the genome size:
+### 1.1) Check Genome size:
 cmd= "awk 'BEGIN {total=0} {if($0 !~ /^>/) {total+=length}} END{print total}' " + genome
 p= subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error)=p.communicate()
@@ -53,8 +52,7 @@ if exit_code:
 result= int(result) #convert str to int
 print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 
-########## --- 2) Get the indexed-genome information --- ##########
-
+############################################################################# --- 2) Get indexed-genome information --- ##########
 #get indexed-genome:
 index_genome= os.path.abspath(config["index"])
 if not os.path.exists(index_genome):
@@ -67,7 +65,8 @@ if not index_end:
 	print("ERROR: indexed-genome: '{0}' should end: '.fa.fai' ".format(index_genome))
 	sys.exit()
 
-########## --- 3) Get the GTF file information --- ##########
+############################################################################# --- 3) Get the GTF file information --- ##########
+#get gtf:
 gtf_path= os.path.abspath(config["gtf"])
 if not os.path.exists(gtf_path):
 	print("ERROR: The GTF file cannot be accessed: '{0}'".format(gtf_path))
@@ -79,7 +78,7 @@ if not gtf_end:
 	print("ERROR: GTF file: '{0}' should end: '.gtf'".format(gtf_path))
 	sys.exit()
 
-# check the number of genes:
+### 3.1) Check Number of Genes:
 cmd= "awk -F \"\\t\" '$3 ~ \"gene\" {print $0}'  " + gtf_path + " | wc -l" 
 p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error) = p.communicate()
@@ -89,7 +88,7 @@ if exit_code:
 result= int(result)
 print("The worked out GTF file contains: {} genes".format(result))
 
-# check the number of transcripts:
+### 3.2) Check Number of Transcripts:
 cmd= "awk -F \"\\t\" '$3 ~ \"transcript\" {print $0}'  " + gtf_path + " | wc -l"
 p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error) = p.communicate()
@@ -99,21 +98,7 @@ if exit_code:
 result= int(result)
 print("The worked out GTF file contains: {} transcripts".format(result))
 
-##### ---- 2) Load the tools needed to run the pipeline --- ##########
-
-# STAR_version= None
-# load= config["load"]
-
-# for tool, source in load.items():
-# 	if tool in ("STAR"):
-# 		source_dump, STAR_version= tool.split("")
-
-##### ---- 3) Define the output folder --- ##########
-
-OUTPUT= os.path.abspath(config["output"])
-
-##### ---- 4) Get sample information --- ##########
-
+############################################################################# ---- 4) Get sample information --- ##########
 #work out if samples are gzipped or not 
 rna_seq_samples = []
 read_dir= os.path.join(OUTPUT, "data", "reads")
@@ -139,24 +124,20 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 		if not os.path.exists(os.path.join(read_dir, new_read_name)):
 			os.system(cmd)
 
-#genome_index folder 
-genome_index_folder= os.path.join(OUTPUT, "genome_index")
-if not os.path.exists(genome_index_folder):
-	os.makedirs(genome_index_folder)
-# #GTF file
-# cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf"
-# if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
-# 	os.system(cmd)
-# #Genome.fa
-# cmd= "cd " + genome_index_folder + " && ln -s "+ genome + " " + "genome.fa"
-# if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
-# 	os.system(cmd)
+############################################################################# ---- 5) Define the output folder --- ##########
+#output folder:
+OUTPUT= os.path.abspath(config["output"])
 
-##### ---- 4) create logs folder --- ##########
+############################################################################# ---- 6) Create Cluster_logs folder --- ##########
 cluster_logs_dir= os.path.join(cwd,"logs","cluster")
 if not os.path.exists(cluster_logs_dir):
 	os.makedirs(cluster_logs_dir)
 
+############################################################################# ---- 7) Create the Genome_index folder --- ##########
+#genome_index folder 
+genome_index_folder= os.path.join(OUTPUT, "genome_index")
+if not os.path.exists(genome_index_folder):
+	os.makedirs(genome_index_folder)
 
 #######################
 # RULES STARTS HERE

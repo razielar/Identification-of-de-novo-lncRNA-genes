@@ -37,7 +37,27 @@ x = thisdict["model"]
 print(x)
 
 
+############################################# ---- APPENDIX from identification.smk ---- #####################################################
 
+##### ---- Load the tools needed to run the pipeline --- ##########
+
+# STAR_version= None
+# load= config["load"]
+
+# for tool, source in load.items():
+# 	if tool in ("STAR"):
+# 		source_dump, STAR_version= tool.split("")
+
+##### ---- Generate symbolik links of gtf and genome.fa inside genome_index_folder --- ##########
+
+# #GTF file
+# cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf"
+# if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
+# 	os.system(cmd)
+# #Genome.fa
+# cmd= "cd " + genome_index_folder + " && ln -s "+ genome + " " + "genome.fa"
+# if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
+# 	os.system(cmd)
 
 
 
