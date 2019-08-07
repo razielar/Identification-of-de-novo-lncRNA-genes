@@ -140,7 +140,7 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 			os.system(cmd)
 
 #genome_index folder 
-genome_index_folder= os.path.join("OUTPUT", "genome_index")
+genome_index_folder= os.path.join(OUTPUT, "genome_index")
 if not os.path.exists(genome_index_folder):
 	os.makedirs(genome_index_folder)
 cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf_file"
