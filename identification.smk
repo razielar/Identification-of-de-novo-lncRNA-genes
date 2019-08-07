@@ -149,14 +149,14 @@ if not os.path.exists(genome_index_folder):
 
 rule all: 
 	input:
-		'output/genome_index'
+		'output/genome_index/SAindex'
 
 rule STAR_index:
 	input:
-		genome= genome,
-		gtf= gtf_path 
+		genome= "/users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa",
+		gtf= "/nfs/users2/rg/projects/references/Annotation/D.melanogaster/dmel_r6.22/mRNA_ncRNA/ucsc.dmel-all-r6.22.mRNA.nRNA.190.length.selection.type.no.Overlapping.Sorted.gtf" 
 	output:
-		'output/genome_index'
+		'output/genome_index/SAindex'
 	threads: 4
 	shell:
 		"STAR --runThreadN {threads} "
