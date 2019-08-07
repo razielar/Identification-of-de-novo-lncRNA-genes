@@ -80,7 +80,7 @@ if not gtf_end:
 	sys.exit()
 
 # check the number of genes and transcripts:
-cmd= "awk -F \"\\t\" '$3 ~ \"gene\" {print $0}'  " + gtf_path
+cmd= "awk -F \"\\t\" '$3 ~ \"gene\" {print $0}'  " + gtf_path + " | wc -l" 
 print("printed command: {0}".format(cmd))
 
 
