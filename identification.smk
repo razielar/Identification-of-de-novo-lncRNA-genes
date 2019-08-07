@@ -149,14 +149,14 @@ if not os.path.exists(genome_index_folder):
 
 rule all: 
 	input:
-		'tmp/SAindex'
+		expand(os.path.join(OUTPUT, "index"))
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		'tmp/SAindex'
+		expand(os.path.join(OUTPUT, "index"))
 	threads: 4
 	shell:
 		"mkdir {output} && "
