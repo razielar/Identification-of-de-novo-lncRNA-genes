@@ -143,19 +143,19 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 genome_index_folder= os.path.join(OUTPUT, "genome_index")
 if not os.path.exists(genome_index_folder):
 	os.makedirs(genome_index_folder)
-#GTF file
-cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf"
-if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
-	os.system(cmd)
-#Genome.fa
-cmd= "cd " + genome_index_folder + " && ln -s "+ genome + " " + "genome.fa"
-if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
-	os.system(cmd)
+# #GTF file
+# cmd= "cd " + genome_index_folder + " && ln -s " + gtf_path + " " + "gtf"
+# if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
+# 	os.system(cmd)
+# #Genome.fa
+# cmd= "cd " + genome_index_folder + " && ln -s "+ genome + " " + "genome.fa"
+# if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
+# 	os.system(cmd)
 
-
-
-
-
+##### ---- 4) create logs folder --- ##########
+cluster_logs_dir= os.path.join(cwd,"logs","cluster")
+if not os.path.exists(cluster_logs_dir):
+	os.makedirs(cluster_logs_dir)
 
 
 #######################
@@ -166,15 +166,28 @@ if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
 # ALIGNMENT & ASSEMBLY WORKFLOW
 #######################
 
+rule STAR_index:
+	input:
+		fa= genome 
+		gtf= gtf_path
+	output:
+		genome_index_folder
+	threads: 4
+	shell:
+		"STAR --runThreadN {threads} "
+		"--runMode genomeGenerate "
+		"--genomeDir {output} "
+		"--genomeFastaFiles {input.fa} "
+		"--sjdbGTFfile {input.gtf} "
+		"--sjdbOverhang 100"
+
+
+
 
 ##### ---- Strandness information --- ##########  
 
 # RSeQC: infer_experiment.py: http://rseqc.sourceforge.net/#infer-experiment-py
 
-##### ---- 4) create logs folder --- ##########
-cluster_logs_dir= os.path.join(cwd,"logs","cluster")
-if not os.path.exists(cluster_logs_dir):
-	os.makedirs(cluster_logs_dir)
 
 
 
