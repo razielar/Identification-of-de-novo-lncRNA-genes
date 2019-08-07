@@ -156,7 +156,7 @@ rule STAR_index:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		'output/genome_index/SAindex'
+		'output/genome_index/'
 	threads: 4
 	shell:
 		"STAR --runThreadN {threads} "
