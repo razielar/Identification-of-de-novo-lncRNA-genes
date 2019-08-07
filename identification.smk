@@ -79,13 +79,25 @@ if not gtf_end:
 	print("ERROR: GTF file: '{0}' should end: '.gtf'".format(gtf_path))
 	sys.exit()
 
-# check the number of genes and transcripts:
+# check the number of genes:
 cmd= "awk -F \"\\t\" '$3 ~ \"gene\" {print $0}'  " + gtf_path + " | wc -l" 
 p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
 (result,error) = p.communicate()
+exit_code = p.returncode
+if exit_code:
+    raise subprocess.CalledProcessError(exit_code,cmd)
 result= int(result)
 print("The worked out GTF file contains: {} genes".format(result))
 
+# check the number of transcripts:
+cmd= "awk -F \"\\t\" '$3 ~ \"transcript\" {print $0}'  " + gtf_path + " | wc -l"
+p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, universal_newlines=True)
+(result,error) = p.communicate()
+exit_code = p.returncode
+if exit_code:
+    raise subprocess.CalledProcessError(exit_code,cmd)
+result= int(result)
+print("The worked out GTF file contains: {} transcripts".format(result))
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
 
