@@ -75,10 +75,13 @@ if not os.path.exists(gtf_path):
 
 gtf_end= None
 gtf_end= True if gtf_path.lower().endswith(".gtf") else False
-if gtf_end:
+if not gtf_end:
 	print("ERROR: GTF file: '{0}' should end: '.gtf'".format(gtf_path))
 	sys.exit()
 
+# check the number of genes and transcripts:
+cmd= "awk -F '\t' '$3 ~ \"gene\" {print $0}'  " + gtf_path
+print("printed command: {0}".format(cmd))
 
 
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
