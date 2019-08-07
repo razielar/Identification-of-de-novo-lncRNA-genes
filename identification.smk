@@ -53,6 +53,14 @@ if exit_code:
 result= int(result) #convert str to int
 print("The worked out genome length is: {:.2E}".format(Decimal(result)))
 
+########## --- 2) Get the indexed-genome information --- ##########
+
+#get indexed-genome:
+index_genome= os.path.abspath(config["index"])
+if os.path.exists(index_genome):
+	print("ERROR: The indexed-genome file cannot be accessed: '{0}'".format(indexed-genome))
+
+
 ##### ---- 2) Load the tools needed to run the pipeline --- ##########
 
 # STAR_version= None
@@ -107,7 +115,9 @@ if not os.path.exists(cluster_logs_dir):
 # RULES STARTS HERE
 #######################
 
-
+#######################
+# ALIGNMENT & ASSEMBLY WORKFLOW
+#######################
 
 
 
