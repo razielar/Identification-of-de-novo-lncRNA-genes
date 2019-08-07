@@ -98,7 +98,11 @@ if exit_code:
 result= int(result)
 print("The worked out GTF file contains: {} transcripts".format(result))
 
-############################################################################# ---- 4) Get sample information --- ##########
+############################################################################# ---- 4) Define the output folder --- ##########
+#output folder:
+OUTPUT= os.path.abspath(config["output"])
+
+############################################################################# ---- 5) Get sample information --- ##########
 #work out if samples are gzipped or not 
 rna_seq_samples = []
 read_dir= os.path.join(OUTPUT, "data", "reads")
@@ -123,10 +127,6 @@ for sample_name, reads in all_samples.items(): #variables={"sample_name": "Sampl
 		cmd= "cd " + read_dir + " && ln -s "+ r_path + " " + new_read_name
 		if not os.path.exists(os.path.join(read_dir, new_read_name)):
 			os.system(cmd)
-
-############################################################################# ---- 5) Define the output folder --- ##########
-#output folder:
-OUTPUT= os.path.abspath(config["output"])
 
 ############################################################################# ---- 6) Create Cluster_logs folder --- ##########
 cluster_logs_dir= os.path.join(cwd,"logs","cluster")
