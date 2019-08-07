@@ -147,6 +147,10 @@ if not os.path.exists(genome_index_folder):
 # ALIGNMENT & ASSEMBLY WORKFLOW
 #######################
 
+rule all: 
+	input:
+		genome_index_folder
+
 rule STAR_index:
 	input:
 		genome= genome,
