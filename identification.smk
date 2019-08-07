@@ -133,12 +133,6 @@ cluster_logs_dir= os.path.join(cwd,"logs","cluster")
 if not os.path.exists(cluster_logs_dir):
 	os.makedirs(cluster_logs_dir)
 
-############################################################################# ---- 7) Create the Genome_index folder --- ##########
-#genome_index folder 
-genome_index_folder= os.path.join(OUTPUT, "genome_index")
-if not os.path.exists(genome_index_folder):
-	os.makedirs(genome_index_folder)
-
 #######################
 # RULES STARTS HERE
 #######################
@@ -149,14 +143,14 @@ if not os.path.exists(genome_index_folder):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "index"))
+		expand(os.path.join(OUTPUT, "genome_index"))
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		expand(os.path.join(OUTPUT, "index"))
+		expand(os.path.join(OUTPUT, "genome_index"))
 	threads: 4
 	shell:
 		"mkdir {output} && "
