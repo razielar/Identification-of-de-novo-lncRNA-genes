@@ -64,7 +64,8 @@ if not os.path.exists(index_genome):
 index_end= None
 index_end= True if index_genome.lower().endswith(".fa.fai") else False
 if not index_end:
-	print("ERROR: indexed-genome: '{0}' should end: '.fa.fai' ".format(index_genome)) 
+	print("ERROR: indexed-genome: '{0}' should end: '.fa.fai' ".format(index_genome))
+	sys.exit()
 
 ########## --- 3) Get the GTF file information --- ##########
 gtf_path= os.path.abspath(config["gtf"])
@@ -72,7 +73,11 @@ if not os.path.exists(gtf_path):
 	print("ERROR: The GTF file cannot be accessed: '{0}'".format(gtf_path))
 	sys.exit()
 
-
+gtf_end= None
+gtf_end= True if gtf_path.lower().endswith(".gtf") else False
+if gtf_end:
+	print("ERROR: GTF file: '{0}' should end: '.gtf'".format(gtf_path))
+	sys.exit()
 
 
 
