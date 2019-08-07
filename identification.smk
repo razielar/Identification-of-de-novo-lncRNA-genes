@@ -149,7 +149,7 @@ if not os.path.exists(os.path.join(genome_index_folder,"gtf")):
 	os.system(cmd)
 #Genome.fa
 cmd= "cd " + genome_index_folder + " && ln -s "+ genome + " " + "genome.fa"
-if not os.path.exists(os.path.join(genome_index, "genome.fa")):
+if not os.path.exists(os.path.join(genome_index_folder, "genome.fa")):
 	os.system(cmd)
 
 
