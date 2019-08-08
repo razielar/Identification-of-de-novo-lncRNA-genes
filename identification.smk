@@ -140,7 +140,7 @@ if not os.path.exists(cluster_logs_dir):
 rule all: 
 	input:
 		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "{sample}.test.txt"))
+		expand(os.path.join(OUTPUT, "{sample}.{ext}.test.txt"))
 		# expand(os.path.join(OUTPUT, "test.txt"))
 
 #######################
@@ -183,7 +183,7 @@ rule STAR_mapping:
 		# r2= get_r2,
 		idx= os.path.join(OUTPUT, "genome_index")
 	output:
-		expand(os.path.join(OUTPUT, "{sample}.test.txt"))
+		os.path.join(OUTPUT, "{sample}.test.txt")
 	shell:
 		"echo \"Hello\" > {output}"
 
