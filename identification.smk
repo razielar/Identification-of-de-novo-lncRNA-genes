@@ -140,7 +140,7 @@ if not os.path.exists(cluster_logs_dir):
 rule all: 
 	input:
 		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "{sample}.{ext}.test.txt"))
+		expand(os.path.join(OUTPUT, "{{sample}}.test.txt")) #bug with wildcard & expand
 		# expand(os.path.join(OUTPUT, "test.txt"))
 
 #######################
