@@ -159,7 +159,8 @@ rule STAR_index:
 		"--genomeDir {output} "
 		"--genomeFastaFiles {input.genome} "
 		"--sjdbGTFfile {input.gtf} "
-		"--sjdbOverhang 100"
+		"--sjdbOverhang 100 && "
+		"mv Log.out {output}"
 
 ##### ---- Strandness information --- ##########  
 
