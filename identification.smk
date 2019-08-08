@@ -137,13 +137,17 @@ if not os.path.exists(cluster_logs_dir):
 # RULES STARTS HERE
 #######################
 
+rule all: 
+	input:
+		expand(os.path.join(OUTPUT, "genome_index"))
+
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
 #######################
 
-rule all: 
-	input:
-		expand(os.path.join(OUTPUT, "genome_index"))
+# run STAR_index
+# ------------------
+
 
 rule STAR_index:
 	input:
@@ -161,6 +165,30 @@ rule STAR_index:
 		"--sjdbGTFfile {input.gtf} "
 		"--sjdbOverhang 100 && "
 		"mv Log.out {output}"
+
+# run STAR_mapping
+# ------------------
+
+def get_r1(wildcards):
+	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
+	return glob(os.path.join(read_dir,wildcards.sample + "*R1.fastq*"))
+
+def get_r2(wildcards):
+	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
+	return glob(os.path.join(read_dir,wildcards.sample + "*R2.fastq*"))
+
+rule STAR_mapping:
+	input:
+		lambda wildcards: config["samples"][wildcards.sample],
+		r1= get_r1,
+		r2= get_r2,
+		idx= os.path.join(OUTPUT, "genome_index")
+	shell:
+		"echo \"Hello\""
+
+
+
+
 
 ##### ---- Strandness information --- ##########  
 
