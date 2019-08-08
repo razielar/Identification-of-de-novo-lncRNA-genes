@@ -143,17 +143,16 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index"))
+		expand(os.path.join(OUTPUT, "genome_index", "SAindex"))
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		expand(os.path.join(OUTPUT, "genome_index"))
+		expand(os.path.join(OUTPUT, "genome_index", "SAindex")) #possible_error 
 	threads: 4
 	shell:
-		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
