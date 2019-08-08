@@ -140,8 +140,10 @@ if not os.path.exists(cluster_logs_dir):
 rule all: 
 	input:
 		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "{{sample}}.test.txt")) #bug with wildcard & expand
+		expand(os.path.join(OUTPUT, "{sample}.test.txt"), sample= rna_seq_samples) #bug with wildcard & expand
 		# expand(os.path.join(OUTPUT, "test.txt"))
+
+expand(OUTPUT)
 
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
