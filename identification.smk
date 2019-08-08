@@ -139,8 +139,8 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "test.txt"))
+		expand(os.path.join(OUTPUT, "genome_index"))
+		# expand(os.path.join(OUTPUT, "test.txt"))
 
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
