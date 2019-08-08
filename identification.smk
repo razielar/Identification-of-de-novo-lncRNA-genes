@@ -143,17 +143,16 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index"))
+		"output/genome_index/SAindex"
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
+		"output/genome_index/SAindex"
 	threads: 4
 	shell:
-		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
@@ -162,7 +161,8 @@ rule STAR_index:
 		"--sjdbOverhang 100"
 
 
-
+# expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
+# "mkdir {output} && "
 
 ##### ---- Strandness information --- ##########  
 
