@@ -143,14 +143,14 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index"))
+		directory(expand(os.path.join(OUTPUT, "genome_index")))
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
+		directory(expand(os.path.join(OUTPUT, "genome_index")))
 	threads: 4
 	shell:
 		"mkdir {output} && "
@@ -160,10 +160,6 @@ rule STAR_index:
 		"--genomeFastaFiles {input.genome} "
 		"--sjdbGTFfile {input.gtf} "
 		"--sjdbOverhang 100"
-
-
-# expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
-
 
 ##### ---- Strandness information --- ##########  
 
