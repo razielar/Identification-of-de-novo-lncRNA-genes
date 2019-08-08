@@ -140,10 +140,7 @@ if not os.path.exists(cluster_logs_dir):
 rule all: 
 	input:
 		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "{sample}.test.txt"), sample= rna_seq_samples) #bug with wildcard & expand
-		# expand(os.path.join(OUTPUT, "test.txt"))
-
-expand(OUTPUT)
+		expand(os.path.join(OUTPUT, "{sample}.test.txt"), sample= rna_seq_samples) 
 
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
@@ -180,9 +177,9 @@ def get_r2(wildcards):
 
 rule STAR_mapping:
 	input:
-		lambda wildcards: config["samples"][wildcards.sample], #There're not wildcards in this rule
-		# r1= get_r1,
-		# r2= get_r2,
+		lambda wildcards: config["samples"][wildcards.sample], 
+		r1= get_r1,
+		r2= get_r2,
 		idx= os.path.join(OUTPUT, "genome_index")
 	output:
 		os.path.join(OUTPUT, "{sample}.test.txt")
