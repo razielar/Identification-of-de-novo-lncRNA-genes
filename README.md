@@ -14,12 +14,19 @@
 
 [Trinity (2011)](https://www.nature.com/articles/nbt.1883): efficiently constructs and analyses sets of **de Brujin graphs**. Trinity fully reconstruction a large fraction of transcripts, transcripts from recently duplicated genes with a sensitivity similar to methods that rely on genome alignments.
 
-## Run the pipeline:
+# Run the pipeline:
 
 First load conda environment that has **snakemake** and all its dependencies.
 
 ```{r}
 
 snakemake --configfile config.yaml --snakefile identification.smk
+
+```
+## Debugging:
+
+```{r}
+
+snakemake -np --configfile config.yaml --snakefile identification.smk
 
 ```
