@@ -153,6 +153,7 @@ rule STAR_index:
 		expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
 	threads: 4
 	shell:
+		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
