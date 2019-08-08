@@ -139,8 +139,8 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index"))
-		# expand(os.path.join(OUTPUT, "test.txt"))
+		expand(os.path.join(OUTPUT, "genome_index")),
+		expand(os.path.join(OUTPUT, "test.txt"))
 
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
@@ -148,8 +148,6 @@ rule all:
 
 # run STAR_index
 # ------------------
-
-
 rule STAR_index:
 	input:
 		genome= genome,
@@ -169,7 +167,6 @@ rule STAR_index:
 
 # run STAR_mapping
 # ------------------
-
 def get_r1(wildcards):
 	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
 	return glob(os.path.join(read_dir,wildcards.sample + "*R1.fastq*"))
@@ -178,16 +175,16 @@ def get_r2(wildcards):
 	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
 	return glob(os.path.join(read_dir,wildcards.sample + "*R2.fastq*"))
 
-# rule STAR_mapping:
-# 	input:
-# 		# lambda wildcards: config["samples"][wildcards.sample],
-# 		r1= get_r1,
-# 		r2= get_r2,
-# 		idx= os.path.join(OUTPUT, "genome_index")
-# 	output:
-# 		expand(os.path.join(OUTPUT, "test.txt"))
-# 	shell:
-# 		"echo \"Hello\" > test.txt"
+rule STAR_mapping:
+	input:
+		# lambda wildcards: config["samples"][wildcards.sample],
+		# r1= get_r1,
+		# r2= get_r2,
+		idx= os.path.join(OUTPUT, "genome_index")
+	output:
+		expand(os.path.join(OUTPUT, "test.txt"))
+	shell:
+		"echo \"Hello\" > test.txt"
 
 
 
