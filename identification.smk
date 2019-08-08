@@ -143,7 +143,7 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		expand(os.path.join(OUTPUT, "genome_index", "SAindex"))
+		expand(os.path.join(OUTPUT, "genome_index"))
 
 rule STAR_index:
 	input:
