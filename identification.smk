@@ -177,7 +177,7 @@ def get_r2(wildcards):
 
 rule STAR_mapping:
 	input:
-		# lambda wildcards: config["samples"][wildcards.sample],
+		lambda wildcards: config["samples"][wildcards.sample],
 		# r1= get_r1,
 		# r2= get_r2,
 		idx= os.path.join(OUTPUT, "genome_index")
