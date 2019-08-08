@@ -150,7 +150,7 @@ rule STAR_index:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		expand(os.path.join(OUTPUT, "genome_index", "SAindex")) #possible_error 
+		expand(os.path.join(OUTPUT, "genome_index")) #possible_error 
 	threads: 4
 	shell:
 		"STAR --runThreadN {threads} "
