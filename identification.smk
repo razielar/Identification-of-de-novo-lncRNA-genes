@@ -143,14 +143,14 @@ if not os.path.exists(cluster_logs_dir):
 
 rule all: 
 	input:
-		"output/genome_index/"
+		"genome_index/"
 
 rule STAR_index:
 	input:
 		genome= genome,
 		gtf= gtf_path
 	output:
-		"output/genome_index/"
+		"genome_index/"
 	threads: 4
 	shell:
 		"mkdir {output} && "
