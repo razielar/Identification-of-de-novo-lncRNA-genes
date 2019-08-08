@@ -178,16 +178,16 @@ def get_r2(wildcards):
 	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
 	return glob(os.path.join(read_dir,wildcards.sample + "*R2.fastq*"))
 
-rule STAR_mapping:
-	input:
-		# lambda wildcards: config["samples"][wildcards.sample],
-		r1= get_r1,
-		r2= get_r2,
-		idx= os.path.join(OUTPUT, "genome_index")
-	output:
-		expand(os.path.join(OUTPUT, "test.txt"))
-	shell:
-		"echo \"Hello\" > test.txt"
+# rule STAR_mapping:
+# 	input:
+# 		# lambda wildcards: config["samples"][wildcards.sample],
+# 		r1= get_r1,
+# 		r2= get_r2,
+# 		idx= os.path.join(OUTPUT, "genome_index")
+# 	output:
+# 		expand(os.path.join(OUTPUT, "test.txt"))
+# 	shell:
+# 		"echo \"Hello\" > test.txt"
 
 
 
