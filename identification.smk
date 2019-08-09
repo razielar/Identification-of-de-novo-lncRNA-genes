@@ -154,7 +154,7 @@ rule STAR_index:
 		gtf= gtf_path
 	output:
 		directory(expand(os.path.join(OUTPUT, "genome_index")))
-	logs:
+	log:
 		expand(os.path.join(OUTPUT,"genome_index", "STAR_index.log"))
 	threads: 4
 	shell:
