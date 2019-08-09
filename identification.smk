@@ -154,18 +154,17 @@ rule STAR_index:
 		gtf= gtf_path
 	output:
 		directory(expand(os.path.join(OUTPUT, "genome_index")))
-	log:
-		expand(os.path.join(OUTPUT,"genome_index", "STAR_index.log"))
 	threads: 4
 	shell:
-		"(mkdir {output} && "
+		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
 		"--genomeFastaFiles {input.genome} "
 		"--sjdbGTFfile {input.gtf} "
-		"--sjdbOverhang 100) 2> {log}"
-
+		"--sjdbOverhang 100 && "
+		"mv Log.out {output}"
+		
 # run STAR_mapping
 # ------------------
 def get_r1(wildcards):
