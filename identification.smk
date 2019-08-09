@@ -185,13 +185,10 @@ rule STAR_mapping:
 		os.path.join(OUTPUT, "{sample}.test.txt")
 	threads: 8
 	shell:
-		"STAR --runThreadN 8 --genomeDir {input.idx} " #Double check typing error
-		"--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within"
+		"echo \"Hello\" > {output}"
 
-
-		# "echo \"Hello\" > {output}"
-
-
+# "STAR --runThreadN 8 --genomeDir {input.idx} " #Double check typing error
+		# "--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within"
 
 
 
