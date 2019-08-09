@@ -164,8 +164,7 @@ rule STAR_index:
 		"--genomeDir {output} "
 		"--genomeFastaFiles {input.genome} "
 		"--sjdbGTFfile {input.gtf} "
-		"--sjdbOverhang 100 && "
-		"mv Log.out {output}) 2> {log}"
+		"--sjdbOverhang 100) 2> {log}"
 
 # run STAR_mapping
 # ------------------
