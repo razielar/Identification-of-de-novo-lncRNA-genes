@@ -187,9 +187,37 @@ rule STAR_mapping:
 	shell:
 		"echo \"Hello\" > {output}"
 
-# "STAR --runThreadN 8 --genomeDir {input.idx} " #Double check typing error
-		# "--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within"
 
+		"STAR --runThreadN 8 --genomeDir {input.idx} " 
+		"--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within "
+		"--outFilterType BySJout --outSAMattributes NH HI AS NM MD "
+		"--outFilterMultimapNmax 10 --outFilterMismatchNmax 999 "
+		"--outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 "
+		"--alignIntronMax 1000000 --alignMatesGapMax 1000000 "
+		"--alignSJoverhangMin 8 --alignSJDBoverhangMin 1 "
+		"--readFilesCommand pigz -p8 -dc --outSAMtype BAM SortedByCoordinate "
+		"--quantMode TranscriptomeSAM "
+		"--outSAMattrRGline ID:fEWP.2 PU:fEWP.2 SM:fEWP.2 PL:ILLUMINA CN:CRG "
+		"--limitBAMsortRAM 33285996544"
+
+#Mismatches: 4 and multimapping: 10
+#explanation of SAM tags: https://samtools.github.io/hts-specs/SAMtags.pdf
+#pigz: Parallel gzip, -p=threads
+#@RG information: https://samtools.github.io/hts-specs/SAMv1.pdf
+
+# STAR --runThreadN 8 --genomeDir genomeDir 
+# --readFilesIn fEWP.2_12046_CCGTCC_1.fastq.gz fEWP.2_12046_CCGTCC_2.fastq.gz 
+# --outSAMunmapped Within --outFilterType BySJout 
+# --outSAMattributes NH HI AS NM MD 
+# --outFilterMultimapNmax 10 
+# --outFilterMismatchNmax 999 
+# --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 
+# --alignIntronMax 1000000 --alignMatesGapMax 1000000 
+# --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 
+# --readFilesCommand pigz -p8 -dc 
+# --outSAMtype BAM SortedByCoordinate --quantMode TranscriptomeSAM 
+--outSAMattrRGline ID:fEWP.2 PU:fEWP.2 SM:fEWP.2 PL:ILLUMINA CN:CRG --limitBAMsortRAM 33285996544
+ID: Read group identifier, PU: Platform Unit , SM: sample , PL: Platform, CN: Name of the Sequencing center 
 
 
 ##### ---- Strandness information --- ##########  
