@@ -17,3 +17,24 @@ snakemake-tutorial/advances_example/scripts
 
 snakemake-tutorial/first_example/data
 
+### Ignore bam files: 
+*.bam
+*.bam.*
+
+### Ignore output folder: 
+output/
+
+### Ignore genomes:
+*.fa
+*.fa.*
+
+### Ignore fastq
+*.fastq
+
+*.vcf
+
+### Ignore logs:
+*.log.out
+
+snakemake-tutorial/advanced_example/scripts
+snakemake-tutorial/advanced_example/data/
