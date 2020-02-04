@@ -8,8 +8,8 @@ genome: /users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa
 # Provide path to indexed genome file:
 index: /users/rg/projects/references/Genome/D.melanogaster/dm6/dm6.fa.fai
 
-# Provide path to GTF file:
-gtf: /nfs/users2/rg/projects/references/Annotation/D.melanogaster/dmel_r6.22/mRNA_ncRNA/ucsc.dmel-all-r6.22.mRNA.nRNA.190.length.selection.type.no.Overlapping.Sorted.gtf
+# Provide path to GTF file: r6.29
+gtf: /nfs/users2/rg/projects/references/Annotation/D.melanogaster/dmel_r6.29/mRNA_ncRNA/ucsc.dmel-all-r6.29.mRNA.nRNA.190.length.selection.type.sorted.no.Overlapping.Sorted.gtf
 
 # Provide paired-end samples: 
 # NOTE: only paired-end reads are supported currently. Please give path to R1 followed by R2 as below 
