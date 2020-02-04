@@ -154,10 +154,9 @@ rule STAR_index:
 		gtf= gtf_path
 	output:
 		directory(expand(os.path.join(OUTPUT, "genome_index")))
-	threads: 8
 	shell:
 		"mkdir {output} && "
-		"STAR --runThreadN {threads} "
+		"STAR --runThreadN 8 "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
 		"--genomeFastaFiles {input.genome} "
@@ -172,7 +171,7 @@ def get_r1(wildcards):
 	return glob(os.path.join(read_dir,wildcards.sample + "*R1.fastq*"))
 
 def get_r2(wildcards):
-	"""Code that returns a list of fastq files for read 1 based on *wildcards.sample* e.g."""
+	"""Code that returns a list of fastq files for read 2 based on *wildcards.sample* e.g."""
 	return glob(os.path.join(read_dir,wildcards.sample + "*R2.fastq*"))
 
 rule STAR_mapping:
