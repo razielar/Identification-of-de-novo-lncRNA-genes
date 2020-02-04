@@ -154,7 +154,7 @@ rule STAR_index:
 		gtf= gtf_path
 	output:
 		directory(expand(os.path.join(OUTPUT, "genome_index")))
-	threads: 4
+	threads: 8
 	shell:
 		"mkdir {output} && "
 		"STAR --runThreadN {threads} "
