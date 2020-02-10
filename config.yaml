@@ -28,7 +28,7 @@ samples:
 strandedness: unstranded
 
 # output folder name
-output: ./output
+output: ./results_regeneration
 #####
 # END of input parameters
 #####
