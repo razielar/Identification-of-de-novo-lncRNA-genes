@@ -156,6 +156,7 @@ rule STAR_index:
 		directory(expand(os.path.join(OUTPUT, "genome_index")))
 	shell:
 		"mkdir {output} && "
+		"module load STAR && "
 		"STAR --runThreadN 8 "
 		"--runMode genomeGenerate "
 		"--genomeDir {output} "
@@ -206,6 +207,32 @@ rule STAR_mapping:
 ######## Customize: between --quantMode & --limitBAMsortRAM 
 # --outSAMattrRGline ID:fEWP.2 PU:fEWP.2 SM:fEWP.2 PL:ILLUMINA CN:CRG --limitBAMsortRAM 33285996544
 # ID: Read group identifier, PU: Platform Unit , SM: sample , PL: Platform, CN: Name of the Sequencing center 
+
+
+"""
+        STAR --genomeDir ${STARgenome} \
+             --readFilesIn ${reads} \
+             --readFilesCommand zcat \
+             --outFilterType BySJout \
+             --outSAMunmapped Within \
+             --outSAMtype BAM SortedByCoordinate \
+             --outSAMattrIHstart 0 \
+             --outFilterIntronMotifs RemoveNoncanonical \
+             --runThreadN ${task.cpus} \
+             --quantMode TranscriptomeSAM \
+             --outWigType bedGraph \
+             --outWigStrand Stranded \
+             --outFileNamePrefix ${name}
+        
+        mkdir STAR_${name}
+        mv ${name}Aligned* STAR_${name}/.
+        mv ${name}Signal* STAR_${name}/.
+        mv ${name}SJ* STAR_${name}/.
+        mv ${name}Log* STAR_${name}/.
+    """
+
+
+
 
 
 ##### ---- Strandness information --- ##########  
