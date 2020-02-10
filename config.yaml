@@ -19,10 +19,10 @@ gtf: /nfs/users2/rg/projects/references/Annotation/D.melanogaster/dmel_r6.29/mRN
 # - the sample keys will be used for naming the output files [for e.g., Sample16, Sample17, Sample18]
 
 samples: 
-  Sample16: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV1_13003_ACAGTG_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV1_13003_ACAGTG_read2.fastq.gz]
-  Sample17: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV2_13004_GCCAAT_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV2_13004_GCCAAT_read2.fastq.gz]
-  Sample18: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV3_13005_CTTGTA_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV3_13005_CTTGTA_read2.fastq.gz]
-  Sample19: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV4_13006_GTGAAA_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV4_13006_GTGAAA_read2.fastq.gz]
+  CRG_control_0h: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV1_13003_ACAGTG_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV1_13003_ACAGTG_read2.fastq.gz]
+  CRG_reg_0h: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV3_13005_CTTGTA_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV3_13005_CTTGTA_read2.fastq.gz]
+  CRG_control_25h: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV2_13004_GCCAAT_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV2_13004_GCCAAT_read2.fastq.gz]  
+  CRG_reg_25h: [/nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV4_13006_GTGAAA_read1.fastq.gz, /nfs/no_backup_isis/rg/ramador/D_me/RNA-seq/Regeneration/Fastq.files/CRG_fastq/EV4_13006_GTGAAA_read2.fastq.gz]
 
 ### Strand-configuration: RSeQC: infer_experiment.py
 strandedness: unstranded
