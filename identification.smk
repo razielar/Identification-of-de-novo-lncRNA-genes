@@ -185,19 +185,16 @@ rule STAR_mapping:
 		os.path.join(OUTPUT, "{sample}.test.txt")
 	threads: 8
 	shell:
-		"echo \"Hello\" > {output}"
+		"STAR --runThreadN 8 --genomeDir {input.idx} " 
+		"--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within "
+		"--outFilterType BySJout --outSAMattributes NH HI AS NM MD "
+		"--outFilterMultimapNmax 10 --outFilterMismatchNmax 999 "
+		"--outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 "
+		"--alignIntronMax 1000000 --alignMatesGapMax 1000000 "
+		"--alignSJoverhangMin 8 --alignSJDBoverhangMin 1 "
+		"--readFilesCommand pigz -p8 -dc --outSAMtype BAM SortedByCoordinate "
+		"--quantMode TranscriptomeSAM "
 
-
-		# "STAR --runThreadN 8 --genomeDir {input.idx} " 
-		# "--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within "
-		# "--outFilterType BySJout --outSAMattributes NH HI AS NM MD "
-		# "--outFilterMultimapNmax 10 --outFilterMismatchNmax 999 "
-		# "--outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 "
-		# "--alignIntronMax 1000000 --alignMatesGapMax 1000000 "
-		# "--alignSJoverhangMin 8 --alignSJDBoverhangMin 1 "
-		# "--readFilesCommand pigz -p8 -dc --outSAMtype BAM SortedByCoordinate "
-		# "--quantMode TranscriptomeSAM "
-		# "--limitBAMsortRAM 33285996544"
 
 #Mismatches: 4 and multimapping: 10
 #explanation of SAM tags: https://samtools.github.io/hts-specs/SAMtags.pdf
@@ -208,42 +205,9 @@ rule STAR_mapping:
 # --outSAMattrRGline ID:fEWP.2 PU:fEWP.2 SM:fEWP.2 PL:ILLUMINA CN:CRG --limitBAMsortRAM 33285996544
 # ID: Read group identifier, PU: Platform Unit , SM: sample , PL: Platform, CN: Name of the Sequencing center 
 
-
-"""
-        STAR --genomeDir ${STARgenome} \
-             --readFilesIn ${reads} \
-             --readFilesCommand zcat \
-             --outFilterType BySJout \
-             --outSAMunmapped Within \
-             --outSAMtype BAM SortedByCoordinate \
-             --outSAMattrIHstart 0 \
-             --outFilterIntronMotifs RemoveNoncanonical \
-             --runThreadN ${task.cpus} \
-             --quantMode TranscriptomeSAM \
-             --outWigType bedGraph \
-             --outWigStrand Stranded \
-             --outFileNamePrefix ${name}
-        
-        mkdir STAR_${name}
-        mv ${name}Aligned* STAR_${name}/.
-        mv ${name}Signal* STAR_${name}/.
-        mv ${name}SJ* STAR_${name}/.
-        mv ${name}Log* STAR_${name}/.
-    """
-
-
-
-
-
 ##### ---- Strandness information --- ##########  
 
 # RSeQC: infer_experiment.py: http://rseqc.sourceforge.net/#infer-experiment-py
-
-
-
-
-
-
 
 
 
