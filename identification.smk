@@ -185,7 +185,6 @@ rule STAR_mapping:
 		os.path.join(OUTPUT, "{sample}.test.txt")
 	threads: 8
 	shell:
-		"mkdir STAR_{sample} && cd STAR_{sample} && "
 		"STAR --runThreadN 8 --genomeDir {input.idx} " 
 		"--readFilesIn {input.r1} {input.r2} --outSAMunmapped Within "
 		"--outFilterType BySJout --outSAMattributes NH HI AS NM MD "
