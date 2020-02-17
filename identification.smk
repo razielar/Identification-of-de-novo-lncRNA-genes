@@ -140,7 +140,7 @@ if not os.path.exists(cluster_logs_dir):
 rule all: 
 	input:
 		expand(os.path.join(OUTPUT, "genome_index")),
-		expand(os.path.join(OUTPUT, "{sample}.test.txt"), sample= rna_seq_samples) 
+		expand(os.path.join(OUTPUT, "STAR_{sample}", "{sample}.test.txt"), sample= rna_seq_samples) 
 
 #######################
 # ALIGNMENT & ASSEMBLY WORKFLOW
@@ -182,7 +182,7 @@ rule STAR_mapping:
 		r2= get_r2,
 		idx= os.path.join(OUTPUT, "genome_index")
 	output:
-		os.path.join(OUTPUT, "{sample}.test.txt")
+		os.path.join(OUTPUT,"STAR_{sample}","{sample}.test.txt")
 	threads: 8
 	shell:
 		"STAR --runThreadN 8 --genomeDir {input.idx} " 
